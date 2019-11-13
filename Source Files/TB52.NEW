@@ -1,0 +1,126 @@
+Xplor-32 Tiny BASIC Version 1.1d                          March 22, 1996
+
+The V1.1 release of TB52 includes some major enhancements that result in a
+more powerful BASIC language. (See below for a list of the current V1.1d
+features). However, there are a few changes to the existing BASIC commands
+that resulted from the conversion from version 1.0d to version 1.1. The
+additions, enhancements, and changes are as follows:
+
+* The ONTIME and IRET commands were added to version 1.1. These commands can
+  be used to implement a one second interrupt within a BASIC program using the
+  TB52 RTC as a timebase.
+
+* The operation of the FREQ command has been enhanced in version 1.1. It now
+  has the option of counting pulses for a user-defined period rather than
+  simply returning the number of counts received in the most recent one second
+  period. It can also be used to set the current count to a specified value.
+  Refer to the description of the FREQ command for complete information.
+
+* The other major enhancement is the operation of the BIT operator when used
+  to output values to the CPU's Port 1 and Port 3. In version 1.0, the BIT
+  operator actually reads the entire byte containing the desired bit into a
+  temporary register, updates the corresponding bit in the temporary register,
+  and then writes the new value to the byte. This operation can cause invalid
+  data to be written to an I/O port when one or more of the bits are used as
+  inputs. In version 1.1, the interpreter checks the operand of the BIT
+  command for Port 1 and Port 3 bit addresses. If it is one of these bits, the
+  interpreter vectors to a jump table that will either set or clear the
+  desired bit explicitly.
+
+* To make room for these additional functions, the code that is used in the
+  X-10 transmit function was removed from the interpreter source file and
+  incorporated into a library file. The library file is loaded into the EEPROM
+  in the top of memory. It also contains several other useful utilities
+  including LCD/keypad software. Since the library file contains X-10 software
+  identical to the original and is located in the upper block of EEPROM, most
+  BASIC applications will not notice the difference. The potential problem
+  with this configuration is if the BASIC program is significantly large and
+  requires more memory than what is available after the library file is
+  loaded.
+
+* The special operators that access the various memory spaces were shortened
+  in version 1.1. The DBYTE, IBYTE, and XBYTE keywords were changed to DBY,
+  IBY, and XBY, respectively. Note that the keyword abbreviations D., I., and
+  X. remain valid for the respective operators. If any of your BASIC programs
+  includes these operators in their non-abbreviated form, they will generate
+  an error message when executed in version 1.1.
+
+* Also note that the abbreviation for the IF keyword is no longer valid.
+
+-------------------------------------------------------------------------------
+
+The version 1.1d update release of TB52 includes a minor change from the
+previous version (V1.1c).
+
+* The timer interrupt routine used as the time base for the real time clock
+  was changed to make sure that registerbank 0 is selected before saving the
+  registers used in the interrupt routine. This will prevent the interrupt
+  routine from corrupting any user-called assembly language routines that have
+  selected registerbank 1, 2, or 3.
+
+-------------------------------------------------------------------------------
+
+The version 1.1c update release of TB52 includes changes from the previous
+version (V1.1b). They are as follows:
+
+* Added some code to help prevent system crashes caused by overwriting the
+  vector addresses in EEPROM. Two safeguards were added:
+
+  1. The top of memory for storing BASIC statement lines was changed from
+     2000H to "Vectors" (currently 1FE1H, or 2000H with the EEPROM8K version).
+     This is checked whenever a BASIC statement line is added. This change
+     also required that the Low byte of the address (previously always 0) be
+     validated in addition to the High byte.
+
+  2. The reset routine that enables the Timer0 interrupt now checks to make
+     sure that there is an LJMP instruction stored in memory at the Timer0
+     interrupt vector address. If not, the interrupt is not enabled.
+
+* Also, jump vectors were added to provide access to error processing info to
+  go along with the latest library file addition.
+
+-------------------------------------------------------------------------------
+
+The version 1.1b update release of TB52 includes changes from the previous
+version (V1.1a). They are as follows:
+
+* Changed the operation of the INPUT command. It is now possible to retype a
+  number entered in response to an INPUT prompt. If an invalid number or
+  non-numeric character is typed at the INPUT prompt, the prompt will be re-
+  displayed and you will be allowed to start entering the number again.
+
+* Changed the EEPROM Write routine to not allow peripheral writes (writes to
+  addresses above 1FFFH) with the A13 address line low. This makes the system
+  more robust, since the EEPROM will not allow peripheral writes when its chip
+  select (A13) is low.
+
+-------------------------------------------------------------------------------
+
+The version 1.1a update release of TB52 includes several minor enhancements to
+the previous V1.1. They are as follows:
+
+* A delay of about 130 milliseconds was added between the TB52 initialization
+  routine and the automatic execution of the BASIC program (if present). This
+  allows a Ctrl-C to be received before BASIC program execution begins.
+
+* Added a jump vector for the character output routine so that the library
+  routines can call the standard character output routine.
+
+-------------------------------------------------------------------------------
+
+The version 1.0 update releases of TB52 (V1.0a, V1.0b, etc.) included several
+minor enhancements to the original (1.0) version. They are as follows:
+
+* The Hex file loading routine is now more efficient (and more bullet-proof).
+
+* The List command, when specified with a line number, will only display up to
+  20 program lines following the specified line.
+
+* The Tilde "~" character can be used like a REM statement in BASIC source
+  file program lines. When TB52 encounters a Tilde character on a program
+  line, the remaining characters on the line are ignored by TB52.
+
+* The line number searching routine (used by the GOTO, GOSUB, and FOR-NEXT
+  commands) is much more efficient. Longer BASIC programs having more than a
+  few branching instructions will now execute about 2 - 3 times faster.
+

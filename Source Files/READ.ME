@@ -1,0 +1,149 @@
+Xplor-32 Tiny BASIC Version 1.1d                          March 22, 1996
+
+This disk contains files that can be used with the Xplor Series PDCs. This
+file contains a brief description of the programs found on the current disk.
+
+The following files are included on this disk:
+
+    Read.Me         This file
+
+    TB52.NEW        Text file that describes the enhancements and changes in
+                    the current version (V 1.1d) of TB52.
+
+    TBQCOMM.EXE     Demo version of the terminal program that can be used to
+                    communicate with the Xplor Series boards.
+    TBQUPGR.EXE     Program to upgrade TBQCOMM to the live version of QCOMM.
+    TBQCOMM.DOC     Document file for TB-QComm.
+    QCOMM.DOC       Document file for QCOMM.
+
+    BXA51.EXE       Demo version of the 8051/52 assembler that can be used for
+                    making changes to the library file or other assembly
+                    language programs.
+    BXAUPGR.EXE     Program to upgrade BXA51 to the live version of BXA51.
+    BXA51.DOC       Document file for BXA51.
+
+    Vector11.HEX    HEX file for reloading vectors at 1FE1H-1FFFH.
+    Vector11.A51    Document and source file for above.
+
+    TB52V11D.HEX     HEX file for the current version (V 1.1d) of TB52.
+
+
+Following is a list of the Application Note files found on this disk. These
+files accompany the application notes that are included with the Xplor Series
+PDC Starter Packages. Each app note file is a self-extracting ZIP file. The
+program and text files will be created when you copy the file to your hard
+drive and type the file name (e.g., "AN-01"). The zip archives also contain an
+ASCII text version of the published application note.
+
+    AN-01.EXE       Interfacing a Multiplexed 7-Segment LED Display to the
+                    Xplor-32d.
+
+    AN-02.EXE       A Remote LCD/Keypad Terminal with Serial Interface Using
+                    an Xplor Series PDC.
+
+
+Following is a list of the sample programs found on this disk. The assembly
+language programs are included in two different formats. The filename.A51
+files are the program source files, and the filename.HEX is the assembled hex
+file that may be uploaded to the Xplor Series PDC.
+
+    RELOAD.A51      Program that can be used to reload the TB52 interpreter to
+                    EEPROM by uploading the TB52 Hex file.
+
+    RELOAD.HEX      The Hex file for the above program.
+
+    LIBRARY.A51     Source file for the Assembly Langauge library routines
+                    included with TB52.
+
+    LIBRARY.HEX     The Hex file for the above program.
+
+    LIBRARYd.A51    Source file for the LCD and Keypad software that is
+                    specific to the Xplor-32d's added I/O ports.
+
+    LIBRARYd.HEX    The Hex file for the above program.
+
+    LIBRARYu.A51    Source file for the LCD and Keypad software that is
+                    specific to the added LCD and Keypad circuitry on the
+                    Xplor-32s, Xplor-32u, and Xplor-32ua.
+
+    LIBRARYu.HEX    The Hex file for the above program.
+
+    Rd_A2D8K.A51    Program for accessing the Analog to Digital Converter on
+                    the Xplor-32a, Xplor-32ca, or Xplor-32ua when using an
+                    Internal ROM CPU. Note: This is only required when the EA
+                    jumper is in the 1-2 (Internal) position.
+
+    Rd_A2D8K.HEX    The Hex file for the above program.
+
+The following sample BASIC programs are included:
+
+    SBUF.BAS        Sample BASIC program interface for using the interrupt
+                    driven serial communication utility included in the
+                    library file.
+
+    TERM.BAS        Sample BASIC program interface for using either of the
+                    Assembly Language LCD and Keypad programs.
+
+    Rd_A2D8K.BAS    Sample BASIC program interface for using the Rd_A2D8K.A51
+                    Analog to Digital Converter program.
+
+    RTC.BAS         Sample program to access the Real Time Clock registers
+
+    ANALOG.BAS      Sample program to read the Analog to Digital Converter on
+                    the Xplor-32a, Xplor-32ca, or Xplor-32ua.
+
+    VOLTAGE.BAS     Program to convert an ADC reading to a 0-5 volt result.
+
+    HUMID.BAS       Program to calibrate and read the optional Humidity sensor
+                    on the Xplor-32a or Xplor-32ca.
+
+    DEGREES.BAS     Program to read temperature (in degrees Celcius) using the
+                    optional temperature sensor on the Xplor-32a, Xplor-32ca,
+                    or Xplor-32ua.
+
+    ADC_THRM.BAS    Program to read temperature using a generic thermistor
+                    circuit with the Xplor-32a, Xplor-32ca, or Xplor-32ua.
+                    The circuit parameters are all defined in program
+                    variables that can easily be changed.
+
+    WDTE.BAS        Sample program to enable the Watch Dog Timer on any of
+                    the Xplor-32 controllers that have the -Fx CPU upgrade
+                    installed.
+
+
+The sample BASIC programs listed above are ready to be uploaded to your Xplor
+PDC. However, there are a few things that you may want to know about the
+sample BASIC programs.
+
+The REM statements included in the sample BASIC programs do not have line
+numbers. This allows the text file to remain fully commented, while reducing
+the amount of memory required to store the BASIC program when it is uploaded
+to the controller. You may want to assign line numbers to the REM statements,
+or to append REM statements to existing program lines. Uploaded REM statements
+without line numbers will be ignored by the BASIC interpreter.
+
+
+We hope that you are completely satisfied with your purchase from Blue Earth
+Research. We try to provide our customers with the best products and services
+possible. Please feel free to use the Suggestion/Problem Report form enclosed
+with your order (or call us directly) if you have any comments or suggestions.
+Free customer support is provided for those of you who need a little hint now
+and then. Note: Please SEND IN YOUR PRODUCT REGISTRATION CARD before
+requesting technical support.
+
+Software updates and additional application software will be posted on our BBS
+at (507) 387-4007. Settings are 14400/9600/2400/1200, N/8/1. If you can't find
+what you need there, leave a message to Sysop. There is a good chance that
+someone has already written all or parts of the software you need.
+
+Several new Xplor-32 products, accessories, and sensors will become available
+on a regular basis. Details will be posted on the BBS as soon as they are
+released. Periodic mailings will also be sent to keep you up to date on the
+latest product announcements. Be sure to send in your product registration
+card so that we have your correct name and address on file.
+
+Custom hardware and software designs are also available at reasonable rates.
+Let us put our experience designing complete systems to work for you. Call us
+any time between 8 AM and 5 PM Central Time, Monday through Friday, at
+(507) 387-4001 or FAX us at (507) 387-4008.
+
